@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список участников</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #3498db;
+        }
+        .participants-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .participant {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .delete-button {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+    <script>
+        function displayParticipants() {
+            var existingData = localStorage.getItem('participants');
+            var participants = existingData ? JSON.parse(existingData) : [];
+
+            var participantsList = document.getElementById('participants-list');
+            participantsList.innerHTML = ''; // Очищаем предыдущий список
+
+            participants.forEach(function (participant, index) {
+                var listItem = document.createElement('li');
+                listItem.className = 'participant';
+
+                var participantInfo = document.createElement('p');
+                participantInfo.innerHTML = '<strong>Имя:</strong> ' + participant.name + '<br>' +
+                                            '<strong>Email:</strong> ' + participant.email + '<br>' +
+                                            '<strong>Телефон:</strong> ' + participant.phone;
+
+                var deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-button';
+                deleteButton.innerHTML = 'Удалить';
+                deleteButton.onclick = function () {
+                    deleteParticipant(index);
+                };
+
+                listItem.appendChild(participantInfo);
+                listItem.appendChild(deleteButton);
+
+                participantsList.appendChild(listItem);
+            });
+        }
+
+        function deleteParticipant(index) {
+            var existingData = localStorage.getItem('participants');
+            var participants = existingData ? JSON.parse(existingData) : [];
+
+            participants.splice(index, 1); // Удаляем участника с указанным индексом
+
+            localStorage.setItem('participants', JSON.stringify(participants));
+            displayParticipants(); // Обновляем список участников на странице
+        }
+
+        window.onload = function () {
+            displayParticipants(); // Вызываем функцию при загрузке страницы
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Список участников</h1>
+        <ul id="participants-list" class="participants-list"></ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обработка...</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            text-align: center;
+        }
+        .loading-message {
+            font-size: 20px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        .checkmark {
+            font-size: 40px;
+            color: #2ecc71;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            simulateProcess();
+        };
+
+        // Симуляция задержки (времени на обработку)
+        function simulateProcess() {
+            setTimeout(function () {
+                showCheckmark();
+            }, 3000); // Установите нужное время задержки (в миллисекундах)
+        }
+
+        // Показать сообщение "Вы добавлены!"
+        function showCheckmark() {
+            var loadingMessage = document.getElementById('loading-message');
+            var checkmark = document.getElementById('checkmark');
+
+            loadingMessage.style.display = 'none';
+            checkmark.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="loading-message" class="loading-message">
+            Пожалуйста подождите... Происходит добавление...
+        </div>
+        <div id="checkmark" class="checkmark">
+            &#10003; <!-- Галочка (checkmark) в формате HTML -->
+            <p>Вы добавлены!</p>
+        </div>
+    </div>
+</body>
+</html>

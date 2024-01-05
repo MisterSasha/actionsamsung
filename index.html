@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акция: Выиграй Samsung Galaxy S23 FE 256GB Mint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #3498db;
+        }
+        .promotion-info {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        form {
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .specs {
+            margin-top: 20px;
+        }
+        .verify-button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function openProcesPage() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+
+            var userData = {
+                name: name,
+                email: email,
+                phone: phone
+            };
+
+            var existingData = localStorage.getItem('participants');
+            var participants = existingData ? JSON.parse(existingData) : [];
+            participants.push(userData);
+            localStorage.setItem('participants', JSON.stringify(participants));
+
+            window.location.href = "proces.html";
+            
+            return false;
+        }
+
+        function verifyParticipants() {
+            window.location.href = "joinactionn.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Акция: Выиграй Samsung Galaxy S23 FE 256GB Mint</h1>
+
+        <img src="https://eshop-cdn.orange.md/product_catalog/4730/04291c1405634c6cb08df540737fe4ea.wl.png.webp" alt="Samsung Galaxy S23 FE 256GB Mint" class="product-image">
+
+        <div class="promotion-info">
+            <p>Участвуйте в нашей акции и получите шанс выиграть Samsung Galaxy S23 FE 256GB Mint!</p>
+            <p>Характеристики:</p>
+            <ul class="specs">
+                <li>Производитель: Samsung</li>
+                <li>Размер (Д x Ш x Т): 158 x 76.5 x 8.2 мм</li>
+                <li>Код модели: SM-S711BLGGSEK</li>
+                <li>Вес: 209 г</li>
+                <li>Цвет: Зелёный</li>
+                <li>Оттенок: Mint</li>
+                <li>Модель: Galaxy S23 FE</li>
+                <li>Форматы воспроизведения: MP4, M4V, 3GP, 3G2, AVI, FLV, MKV, WEBM</li>
+                <li>Процессор:
+                    <ul>
+                        <li>Модель процессора: Exynos 2200</li>
+                        <li>Максимальная частота: 2.8 ГГц</li>
+                        <li>Производитель процессора: Samsung</li>
+                        <li>Модель графического процессора: Xclipse 920</li>
+                        <li>Количество ядер: 8</li>
+                        <li>Технология производства: 4 нм</li>
+                    </ul>
+                </li>
+                <!-- Добавьте остальные характеристики по аналогии -->
+            </ul>
+            <p>Не упустите свой шанс! Оставьте заявку прямо сейчас.</p>
+        </div>
+
+        <form action="proces.html" method="post" onsubmit="return openProcesPage()">
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Ваш Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Ваш номер телефона:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <button type="submit">Участвовать в акции</button>
+        </form>
+
+        <button class="verify-button" onclick="verifyParticipants()">Verify</button>
+    </div>
+</body>
+</html>
